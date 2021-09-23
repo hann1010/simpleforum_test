@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Forum_post(models.Model):
     title = models.CharField(max_length=100, blank=True)
     post_type = models.CharField(max_length=100, blank=True)
+    origin_post_id= models.IntegerField(default=0)
     content = models.TextField(blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
     date_last_save = models.DateTimeField(auto_now=timezone.now)
