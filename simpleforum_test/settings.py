@@ -121,10 +121,11 @@ CKEDITOR_CONFIGS = {
         'default': {
             'toolbar': 'Custom',
             'toolbar_Custom': [
-                ['Bold', 'Italic', 'Underline'],
-                ['TextColor', 'BGColor'],
+                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+                ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'],
                 ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-                ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton','HiddenField'],
+                ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea'], 
+                ['Select', 'Button', 'ImageButton','HiddenField'],
                 ['Styles', 'Format', 'Font', 'FontSize'],
                 ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
                 ['RemoveFormat', 'Source']
