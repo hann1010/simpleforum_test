@@ -102,7 +102,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+CKEDITOR_CONFIGS = {
+        'default': {
+            'toolbar': 'Custom',
+            'toolbar_Custom': [
+                ['Bold', 'Italic', 'Underline'],
+                ['TextColor', 'BGColor'],
+                ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton','HiddenField'],
+                ['Styles', 'Format', 'Font', 'FontSize'],
+                ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
+                ['RemoveFormat', 'Source']
+            ]
+        }
+    }
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
