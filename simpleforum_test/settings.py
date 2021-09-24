@@ -124,12 +124,9 @@ CKEDITOR_CONFIGS = {
                 ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
                 ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'],
                 ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-                ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea'], 
-                ['Select', 'Button', 'ImageButton','HiddenField'],
+                ['Textarea', 'RemoveFormat', 'Source', 'Link', 'Unlink'],
                 ['Styles', 'Format', 'Font', 'FontSize'],
                 ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
-                ['RemoveFormat', 'Source'], 
-                ['Link', 'Unlink']
             ]
         }
     }
