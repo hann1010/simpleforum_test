@@ -128,7 +128,8 @@ CKEDITOR_CONFIGS = {
                 ['Select', 'Button', 'ImageButton','HiddenField'],
                 ['Styles', 'Format', 'Font', 'FontSize'],
                 ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
-                ['RemoveFormat', 'Source'], ['Link', 'Unlink']
+                ['RemoveFormat', 'Source'], 
+                ['Link', 'Unlink']
             ]
         }
     }
