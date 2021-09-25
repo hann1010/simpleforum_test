@@ -33,7 +33,7 @@
                 <li><a href="#">Comments</a></li>
               </ul>
             </li>
-            <li><a href="#">Page 2</a></li>
+            <li><a href="{% url 'forum_topic-create' %}">Topic new</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
