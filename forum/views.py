@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Forum_post
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     #ListView,
@@ -41,4 +42,5 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         form.instance.post_type = 'Topic'
+        messages.add_message(self.request, messages.INFO, 'Yours new topic has been saved!')
         return super().form_valid(form)
