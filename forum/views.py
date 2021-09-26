@@ -53,8 +53,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        context["title_topic"] = 'foo'
+        context["topic_context"] = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         return context
 
     def get_template_names(self):

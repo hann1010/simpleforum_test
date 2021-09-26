@@ -7,7 +7,9 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Forum new comment</legend>
                 <div class="well">
-                    {{ title_topic }}
+                    <p>{{ topic_context.title }}</p>
+                    <br>
+                    {{ topic_context.content | safe }}
                 </div>
                 {{ form.media }}
                 {{ form }}
