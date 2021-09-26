@@ -28,4 +28,6 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('password/',auth_views.PasswordChangeView.as_view(template_name='users/change-password.html',
         success_url = '/'),name='change_password')
-]
+] 
+
+
