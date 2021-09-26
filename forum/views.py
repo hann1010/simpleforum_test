@@ -51,6 +51,12 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     success_url = '/latest/topic/'
     fields = ['content']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["title_topic"] = 'foo'
+        return context
+
     def get_template_names(self):
         if  self.request.user.profile.user_level > 3:
             template_name = 'forum/comment_new.html'
