@@ -29,7 +29,7 @@ def latest_topic(request):
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
-    success_url = '/'
+    success_url = '/latest/topic/'
     fields = ['title', 'content']
 
     def get_template_names(self):
