@@ -10,7 +10,6 @@ class Forum_post(models.Model):
     content = RichTextField()
     date_posted = models.DateTimeField(default=timezone.now)
     date_last_save = models.DateTimeField(auto_now=timezone.now)
-    post_id = models.AutoField(primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
