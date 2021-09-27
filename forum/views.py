@@ -32,6 +32,11 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
     success_url = '/latest/topic/'
     fields = ['title', 'content']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'new topic'
+        return context
+
     def get_template_names(self):
         if  self.request.user.profile.user_level > 3:
             template_name = 'forum/topic_new.html'
@@ -54,6 +59,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["topic_context"] = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        context["title"] = 'new comment'
         return context
 
     def get_template_names(self):
