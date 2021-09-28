@@ -70,7 +70,9 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         return template_name
 
     def form_valid(self, form):
+        db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         form.instance.author = self.request.user
         form.instance.post_type = 'Comment'
+        form.instance.title = 'Re: ' + db_data['title']
         messages.add_message(self.request, messages.INFO, 'Yours new comment has been saved!')
         return super().form_valid(form)
