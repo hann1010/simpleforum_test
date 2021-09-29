@@ -74,5 +74,9 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         form.instance.post_type = 'Comment'
         form.instance.title = 'Re: ' + db_data['title']
+        if db_data['origin_post_id'] == 0:
+            form.instance.origin_post_id = db_data['id']
+        else:
+            form.instance.origin_post_id = db_data['origin_post_id']
         messages.add_message(self.request, messages.INFO, 'Yours new comment has been saved!')
         return super().form_valid(form)
