@@ -17,11 +17,11 @@ def home(request):
     return render(request, 'forum/index.html', dic_x)
 
 
-def latest_topic(request):
+def latest_topics(request):
     dic_x = {}
     if request.user.is_authenticated:
         dic_x = {
-            'title': 'latest topic',
+            'title': 'latest topics',
             'posts': Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
         }
     return render(request, 'forum/itemview.html', dic_x)
