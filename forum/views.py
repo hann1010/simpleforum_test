@@ -27,6 +27,16 @@ def latest_topics(request):
     return render(request, 'forum/itemview.html', dic_x)
 
 
+def latest_comments(request):
+    dic_x = {}
+    if request.user.is_authenticated:
+        dic_x = {
+            'title': 'latest comments',
+            'posts': Forum_post.objects.exclude(origin_post_id = 0).order_by('-date_posted')
+        }
+    return render(request, 'forum/itemview.html', dic_x)
+
+
 def latest_all(request):
     dic_x = {}
     if request.user.is_authenticated:
