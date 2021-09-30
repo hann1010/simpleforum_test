@@ -22,7 +22,7 @@ def latest_topic(request):
     if request.user.is_authenticated:
         dic_x = {
             'title': 'latest topic',
-            'posts': Forum_post.objects.all().order_by('-date_posted')
+            'posts': Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
         }
     return render(request, 'forum/itemview.html', dic_x)
 
