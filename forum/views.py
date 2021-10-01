@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Forum_post
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -40,9 +41,14 @@ def latest_comments(request):
 def latest_all(request):
     dic_x = {}
     if request.user.is_authenticated:
+        list_rows_int = request.user.profile.list_rows
+        db_data = Forum_post.objects.all().order_by('-date_posted')
+        paginator = Paginator(db_data, list_rows_int)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         dic_x = {
             'title': 'latest all',
-            'posts': Forum_post.objects.all().order_by('-date_posted')
+            'posts': page_obj
         }
     return render(request, 'forum/itemview.html', dic_x)
 
