@@ -65,7 +65,7 @@ def latest_all(request):
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
-    success_url = '/latest/topic/'
+    success_url = '/latest/topics/'
     fields = ['title', 'content']
 
     def get_context_data(self, **kwargs):
@@ -89,7 +89,7 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
-    success_url = '/latest/topic/'
+    success_url = '/latest/topics/'
     fields = ['content']
 
     def get_context_data(self, **kwargs):
