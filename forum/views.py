@@ -21,9 +21,14 @@ def home(request):
 def latest_topics(request):
     dic_x = {}
     if request.user.is_authenticated:
+        list_rows_int = request.user.profile.list_rows
+        db_data = Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
+        paginator = Paginator(db_data, list_rows_int)
+        page_number = request.GET.get('page')
+        page_data = paginator.get_page(page_number)
         dic_x = {
             'title': 'latest topics',
-            'posts': Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
+            'posts': page_data
         }
     return render(request, 'forum/itemview.html', dic_x)
 
