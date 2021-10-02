@@ -14,9 +14,14 @@ from django.views.generic import (
 def home(request):
     dic_x = {}
     if request.user.is_authenticated:
+        list_rows_int = request.user.profile.list_rows
+        db_data = Forum_post.objects.all().order_by('-date_posted')
+        paginator = Paginator(db_data, list_rows_int)
+        page_number = request.GET.get('page')
+        page_data = paginator.get_page(page_number)
         dic_x = {
             'title': 'home',
-            'posts': Forum_post.objects.all().order_by('-date_posted')
+            'posts': page_data
         }
     return render(request, 'forum/index.html', dic_x)
 

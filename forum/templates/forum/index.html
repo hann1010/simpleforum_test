@@ -10,8 +10,8 @@
                     <th>Title</th>
                     <th>Author</th>
                     <th>Post type</th>
-                    <th>Date posted</th>
-                    <th>Last update / Update</th>
+                    <th>Date posted(UTC)</th>
+                    <th>Last update(UTC) / Update</th>
                 <th>Open</th>
                 </tr>
             </thead>
@@ -26,11 +26,25 @@
                             <td><a href="#">Open</a></td>
                     </tr>
                 </tbody>	
-            {% endfor %}
-			
-	
-		
+            {% endfor %}		
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ posts.previous_page_number }}">previous</a>
+                {% endif %}
+                
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </span>
+    
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">next</a>   
+                    <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>	
         {% else %}
         <h1>Index Page</h1>
         <p>Simpleforum</p>
