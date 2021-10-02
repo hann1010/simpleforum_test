@@ -2,8 +2,39 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
+        {% if user.is_authenticated %}
+        <h1>Index</h1>
+        <table class="table table-striped">
+			<thead>
+			  <tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Post type</th>
+                <th>Date posted</th>
+                <th>Last update / Update</th>
+                <th>Open</th>
+			  </tr>
+			</thead>
+			{% for post in posts %}
+					<tbody id="myTable">
+						<tr>
+							<td>{{ post.title }}</td>
+							<td>{{ post.author }}</td>
+							<td>{{ post.post_type }}</td>
+                            <td>{{ post.date_posted|date:"H:i d F, Y" }}</td>
+							<td><a href="#">{{ post.date_last_save|date:"H:i d F, Y" }}</a></td>
+                            <td><a href="#">"Open"</a></td>
+						</tr>
+					</tbody>	
+			{% endfor %}
+			
+	
+		
+	</table>
+        {% else %}
         <h1>Index Page</h1>
         <p>Simpleforum</p>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
