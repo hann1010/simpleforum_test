@@ -12,9 +12,12 @@ from django.views.generic import (
 )
 
 def home(request):
-    dic_x = {
-        'title': 'home'
-    }
+    dic_x = {}
+    if request.user.is_authenticated:
+        dic_x = {
+            'title': 'home',
+            'posts': Forum_post.objects.all().order_by('-date_posted')
+        }
     return render(request, 'forum/index.html', dic_x)
 
 
