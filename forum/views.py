@@ -72,7 +72,7 @@ def latest_all(request):
     return render(request, 'forum/itemview.html', dic_x)
 
 
-class AllDetailView(DetailView):
+class AllDetailView(LoginRequiredMixin, DetailView):
     model = Forum_post
     template_name = 'forum/oneview.html'
 
