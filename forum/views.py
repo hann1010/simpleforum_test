@@ -71,6 +71,17 @@ def latest_all(request):
     return render(request, 'forum/itemview.html', dic_x)
 
 
+def open_one_post(self, request, pk, *args, **kwargs):
+    dic_x = {}
+    if request.user.is_authenticated:
+        dic_x = {
+            'title': 'open one post',
+            'posts': Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        }
+    return render(request, 'forum/itemview.html', dic_x)
+
+
+
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
     success_url = '/latest/all/'
