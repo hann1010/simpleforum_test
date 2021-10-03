@@ -72,16 +72,14 @@ def latest_all(request):
     return render(request, 'forum/itemview.html', dic_x)
 
 
-
 class AllDetailView(DetailView):
     model = Forum_post
-    template_name = 'forum/itemview.html'
+    template_name = 'forum/oneview.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = 'open one post'
         return context
-
 
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
@@ -115,7 +113,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["topic_context"] = Forum_post.objects.all().filter(pk=self.kwargs.get('pk'))
+        context["topic_context"] = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         context["title"] = 'new comment'
         return context
 

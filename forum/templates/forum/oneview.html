@@ -1,0 +1,30 @@
+{% extends "forum/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="well"><h2>Forum - {{ title }}</h2></div>
+            <div class="media">
+                <div class="well">
+                    <div class="media-left">
+                        <img src="img_avatar1.png" class="media-object" style="width:40px">
+                    </div>
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="#">{{ object.post_type }}</a>
+                            <small class="text-muted">{{ object.date_posted|date:"H:i d, m, Y" }}</small>
+                            <br>
+                            <a class="mr-2" href="#">{{ object.author }}</a>
+                        </div>
+                        <h2><a class="article-title" href="{% url 'forum_comment-create' object.id %}">{{ object.title }}</a></h2>
+                        <div class="well">
+                            <p class="article-content">{{ object.content | safe }}</p>
+                        </div>
+                        <a class="mr-2" href="{% url 'forum_comment-create' object.id %}">Comment</a>
+                        <a class="mr-2" href="#">Open the message thread</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
