@@ -1,6 +1,8 @@
 #from _typeshed import Self
 from django.shortcuts import render
 from .models import Forum_post
+from forum import models
+from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -79,6 +81,23 @@ class AllDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = 'open one post'
+        return context
+
+
+class ThreadDetailView(LoginRequiredMixin, DetailView):
+    model = Forum_post
+    template_name = 'forum/itemview.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        if db_data['origin_post_id'] == 0:
+            post_id = db_data['id']
+        else:
+            post_id = db_data['origin_post_id']
+        db_data_b = Forum_post.objects.filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
+        context["posts"] = db_data_b
+        context["title"] = 'open message thread'
         return context
 
 

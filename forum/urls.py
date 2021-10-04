@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     #PostListView,
     AllDetailView,
+    ThreadDetailView,
     TopicCreateView,
     CommentCreateView,
     #PostUpdateView,
@@ -19,5 +20,6 @@ urlpatterns = [
     path('topic/new/', TopicCreateView.as_view(), name='forum_topic-create'),
     path('all/<int:pk>/comment/new/', CommentCreateView.as_view(), name='forum_comment-create'),
     path('all/<int:pk>/open/', AllDetailView.as_view(), name='forum_open_one_post'),
+    path('all/<int:pk>/thread/', ThreadDetailView.as_view(), name='forum_thread'),
 	
 ]
