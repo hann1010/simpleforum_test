@@ -80,7 +80,7 @@ class AllDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'open one post'
+        context["title"] = 'one post'
         return context
 
 
@@ -101,7 +101,7 @@ class ThreadDetailView(LoginRequiredMixin, DetailView):
         page_number = self.kwargs.get('page')
         db_data_c = paginator.get_page(page_number)
         context["posts"] = db_data_c
-        context["title"] = 'open message thread'
+        context["title"] = 'message thread'
         return context
 
 
