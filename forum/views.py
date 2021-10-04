@@ -89,6 +89,7 @@ class ThreadDetailView(LoginRequiredMixin, DetailView):
     template_name = 'forum/itemview.html'
 
     def get_context_data(self, **kwargs):
+        list_rows_int = self.request.user.profile.list_rows
         context = super().get_context_data(**kwargs)
         db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         if db_data['origin_post_id'] == 0:
@@ -96,7 +97,10 @@ class ThreadDetailView(LoginRequiredMixin, DetailView):
         else:
             post_id = db_data['origin_post_id']
         db_data_b = Forum_post.objects.filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
-        context["posts"] = db_data_b
+        paginator = Paginator(db_data_b, list_rows_int)
+        page_number = self.kwargs.get('page')
+        db_data_c = paginator.get_page(page_number)
+        context["posts"] = db_data_c
         context["title"] = 'open message thread'
         return context
 
