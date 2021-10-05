@@ -32,9 +32,9 @@ def home(request):
 def latest_topics(request):
     dic_x = {}
     if request.user.is_authenticated:
-        list_rows_int = request.user.profile.items_in_page
+        items_in_page_int = request.user.profile.items_in_page
         db_data = Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
-        paginator = Paginator(db_data, list_rows_int)
+        paginator = Paginator(db_data, items_in_page_int)
         page_number = request.GET.get('page')
         page_data = paginator.get_page(page_number)
         dic_x = {
@@ -47,9 +47,9 @@ def latest_topics(request):
 def latest_comments(request):
     dic_x = {}
     if request.user.is_authenticated:
-        list_rows_int = request.user.profile.items_in_page
+        items_in_page_int = request.user.profile.items_in_page
         db_data = Forum_post.objects.exclude(origin_post_id = 0).order_by('-date_posted')
-        paginator = Paginator(db_data, list_rows_int)
+        paginator = Paginator(db_data, items_in_page_int)
         page_number = request.GET.get('page')
         page_data = paginator.get_page(page_number)
         dic_x = {
@@ -62,9 +62,9 @@ def latest_comments(request):
 def latest_all(request):
     dic_x = {}
     if request.user.is_authenticated:
-        list_rows_int = request.user.profile.items_in_page
+        items_in_page_int = request.user.profile.items_in_page
         db_data = Forum_post.objects.all().order_by('-date_posted')
-        paginator = Paginator(db_data, list_rows_int)
+        paginator = Paginator(db_data, items_in_page_int)
         page_number = request.GET.get('page')
         page_data = paginator.get_page(page_number)
         dic_x = {
@@ -89,7 +89,7 @@ class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
     template_name = 'forum/itemview.html'
 
     def get_context_data(self, **kwargs):
-        list_rows_int = self.request.user.profile.items_in_page
+        items_in_page_int = self.request.user.profile.items_in_page
         context = super().get_context_data(**kwargs)
         db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         if db_data['origin_post_id'] == 0:
@@ -97,7 +97,7 @@ class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
         else:
             post_id = db_data['origin_post_id']
         db_data_b = Forum_post.objects.filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
-        paginator = Paginator(db_data_b, list_rows_int)
+        paginator = Paginator(db_data_b, items_in_page_int)
         page_number = self.kwargs.get('page')
         db_data_c = paginator.get_page(page_number)
         context["posts"] = db_data_c
