@@ -13,6 +13,7 @@ class Profile(models.Model):
     country = models.CharField(max_length=200, blank=True)
     user_level= models.IntegerField(default=1)
     list_rows= models.IntegerField(default=10)
+    items_in_page= models.IntegerField(default=10)
     
     def __str__(self):
         return  str(self.user) + " / " + self.club +" / " \
