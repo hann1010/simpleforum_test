@@ -96,11 +96,11 @@ class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
             post_id = db_data['id']
         else:
             post_id = db_data['origin_post_id']
-        db_data_b = Forum_post.objects.filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
-        paginator = Paginator(db_data_b, items_in_page_int)
+        db_data = Forum_post.objects.filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
+        paginator = Paginator(db_data, items_in_page_int)
         page_number = self.kwargs.get('page')
-        db_data_c = paginator.get_page(page_number)
-        context["posts"] = db_data_c
+        page_data = paginator.get_page(page_number)
+        context["posts"] = page_data
         context["title"] = 'message thread'
         return context
 
