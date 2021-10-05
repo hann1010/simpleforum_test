@@ -32,7 +32,7 @@ def home(request):
 def latest_topics(request):
     dic_x = {}
     if request.user.is_authenticated:
-        list_rows_int = request.user.profile.list_rows
+        list_rows_int = request.user.profile.items_in_page
         db_data = Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
         paginator = Paginator(db_data, list_rows_int)
         page_number = request.GET.get('page')
@@ -47,7 +47,7 @@ def latest_topics(request):
 def latest_comments(request):
     dic_x = {}
     if request.user.is_authenticated:
-        list_rows_int = request.user.profile.list_rows
+        list_rows_int = request.user.profile.items_in_page
         db_data = Forum_post.objects.exclude(origin_post_id = 0).order_by('-date_posted')
         paginator = Paginator(db_data, list_rows_int)
         page_number = request.GET.get('page')
@@ -62,7 +62,7 @@ def latest_comments(request):
 def latest_all(request):
     dic_x = {}
     if request.user.is_authenticated:
-        list_rows_int = request.user.profile.list_rows
+        list_rows_int = request.user.profile.items_in_page
         db_data = Forum_post.objects.all().order_by('-date_posted')
         paginator = Paginator(db_data, list_rows_int)
         page_number = request.GET.get('page')
@@ -74,7 +74,7 @@ def latest_all(request):
     return render(request, 'forum/itemview.html', dic_x)
 
 
-class AllDetailView(LoginRequiredMixin, DetailView):
+class AllDetailView(LoginRequiredMixin, DetailView): #Show one post
     model = Forum_post
     template_name = 'forum/oneview.html'
 
@@ -84,12 +84,12 @@ class AllDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
-class ThreadDetailView(LoginRequiredMixin, DetailView):
+class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
     model = Forum_post
     template_name = 'forum/itemview.html'
 
     def get_context_data(self, **kwargs):
-        list_rows_int = self.request.user.profile.list_rows
+        list_rows_int = self.request.user.profile.items_in_page
         context = super().get_context_data(**kwargs)
         db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         if db_data['origin_post_id'] == 0:
