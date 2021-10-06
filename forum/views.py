@@ -156,7 +156,8 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
             form.instance.origin_post_id = db_data['id']
         else:
             form.instance.origin_post_id = db_data['origin_post_id']
-        messages.add_message(self.request, messages.INFO, 'Yours new comment has been saved!')
+        info = 'Yours new comment '+ db_data['title']+ ' has been updated!'
+        messages.add_message(self.request, messages.INFO, info)
         return super().form_valid(form)
 
 
@@ -164,6 +165,11 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Forum_post
     success_url = '/latest/all/'
     fields = ['content']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'edit post'
+        return context
 
     def get_template_names(self):
         if  self.request.user.profile.user_level > 3:
@@ -180,7 +186,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
     def test_func(self):
-        Apartment = self.get_object()
+        Forum_post = self.get_object()
         if self.request.user == Forum_post.author:
             return True
         return False
