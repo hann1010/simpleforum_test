@@ -10,7 +10,6 @@ from .views import (
     #PostDeleteView
 )
 
-from . import views
 
 urlpatterns = [
     path('', views.home, name='forum-home'),
