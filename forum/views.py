@@ -156,7 +156,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
             form.instance.origin_post_id = db_data['id']
         else:
             form.instance.origin_post_id = db_data['origin_post_id']
-        info = 'Yours new comment '+ db_data['title']+ ' has been updated!'
+        info = 'Yours new comment to '+ db_data['title']+ ' has been saved!'
         messages.add_message(self.request, messages.INFO, info)
         return super().form_valid(form)
 
