@@ -10,7 +10,7 @@ from django.views.generic import (
     #ListView,
     DetailView,
     CreateView,
-    #UpdateView,
+    UpdateView,
     #DeleteView,
 )
 
@@ -158,3 +158,29 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
             form.instance.origin_post_id = db_data['origin_post_id']
         messages.add_message(self.request, messages.INFO, 'Yours new comment has been saved!')
         return super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Forum_post
+    success_url = '/latest/all/'
+    fields = ['content']
+
+    def get_template_names(self):
+        if  self.request.user.profile.user_level > 3:
+            template_name = 'forum/edit_all.html'
+        else:
+            template_name = ''
+        return template_name
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        info = 'Post '+ db_data['title']+ ' has been updated!'
+        messages.add_message(self.request, messages.INFO, info)
+        return super().form_valid(form)
+
+    def test_func(self):
+        Apartment = self.get_object()
+        if self.request.user == Forum_post.author:
+            return True
+        return False
