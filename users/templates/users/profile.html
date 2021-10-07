@@ -7,7 +7,8 @@
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
-						<legend class="border-bottom mb-4">Update profile for user: {{ user }}</legend>
+						<legend class="border-bottom mb-4">Update profile for user: {{ user }}
+							Session Started at: {{ user.last_login |date:"H:i d, m, Y" }}</legend>
 						{{ form.as_p }}
 						<br>
 						<p>Settings:</p>
