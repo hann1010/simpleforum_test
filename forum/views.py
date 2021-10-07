@@ -11,7 +11,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    #DeleteView,
+    DeleteView,
 )
 
 def home(request):
@@ -164,7 +164,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Forum_post
     success_url = '/latest/all/'
-    fields = ['content']
+    fields = ['title','content']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -190,3 +190,19 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user == Forum_post.author:
             return True
         return False
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Forum_post
+    success_url = '/latest/all/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'delete post'
+        return context
+
+    def test_func(self):
+        Forum_post = self.get_object()
+        if self.request.user == Forum_post.author and self.request.user.profile.user_level > 4:
+            return True
+        return False 

@@ -22,9 +22,6 @@
                         </div>
                         <a class="mr-2" href="{% url 'forum_comment-create' post.id %}">Comment</a>
                         <a class="mr-2" href="{% url 'forum_thread' post.id %}">Open the message thread</a>
-                        {% if object.author == user %}
-                        <a class="mr-2" href="{% url 'forum_all_update' object.id %}">Update</a>
-                        {% endif %}
                     </div>
                 </div>
             </div>
