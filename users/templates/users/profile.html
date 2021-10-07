@@ -3,21 +3,20 @@
 <div class="container">
 	<div class="jumbotron">
 		<h1>Profile</h1>
-			<form method="POST">
-				{% csrf_token %}
-				<fieldset class="form-group">
-					<legend class="border-bottom mb-4">Update profile for user: {{ user }}.</legend>
-					<p>Joined at: {{ user.date_joined |date:"H:i d, m, Y"}}</p>
-					<p>Session Started at: {{ user.last_login |date:"H:i d, m, Y" }}</p>
-					{{ form.as_p }}
-					<br>
-					<p>Settings:</p>
-					{{ p_form.as_p }}
-				</fieldset>				
-				<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Save</button>
-				<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'forum-home'  %}">Return to Index</a>	
-			</form>
-		</div>	
-	</div>
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Update profile for user: {{ user }}.</legend>
+				<p>Joined at: {{ user.date_joined |date:"H:i d, m, Y"}}</p>
+				<p>Session Started at: {{ user.last_login |date:"H:i d, m, Y" }}</p>
+				{{ form.as_p }}
+				<br>
+				<p>Settings:</p>
+				{{ p_form.as_p }}
+			</fieldset>				
+			<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Save</button>
+			<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'forum-home'  %}">Return to Index</a>	
+		</form>
+	</div>	
 </div>
 {% endblock content %}
