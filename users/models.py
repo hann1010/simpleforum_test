@@ -14,6 +14,7 @@ class Profile(models.Model):
     user_level= models.IntegerField(default=1)
     list_rows= models.IntegerField(default=10)
     items_in_page= models.IntegerField(default=10)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     
     def __str__(self):
         return  str(self.user) + " / " + self.club +" / " \
