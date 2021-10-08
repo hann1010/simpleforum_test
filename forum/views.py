@@ -119,7 +119,7 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
         if  self.request.user.profile.user_level > 3:
             template_name = 'forum/topic_new.html'
         else:
-            template_name = ''
+            template_name = 'forum/forbidden.html'
         return template_name
 
     def form_valid(self, form):
@@ -144,7 +144,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         if  self.request.user.profile.user_level > 3:
             template_name = 'forum/comment_new.html'
         else:
-            template_name = ''
+            template_name = 'forum/forbidden.html'
         return template_name
 
     def form_valid(self, form):
@@ -175,7 +175,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if  self.request.user.profile.user_level > 3:
             template_name = 'forum/edit_all.html'
         else:
-            template_name = ''
+            template_name = 'forum/forbidden.html'
         return template_name
 
     def form_valid(self, form):
