@@ -12,7 +12,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=200, blank=True)
     town = models.CharField(max_length=200, blank=True)
     country = models.CharField(max_length=200, blank=True)
-    user_level= models.IntegerField(default=1)
+    user_level= models.IntegerField(default=10)
     list_rows= models.IntegerField(default=10)
     items_in_page= models.IntegerField(default=10)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
