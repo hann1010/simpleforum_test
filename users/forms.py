@@ -21,4 +21,4 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'list_rows', 'items_in_page']
+        fields = ['list_rows', 'items_in_page']
