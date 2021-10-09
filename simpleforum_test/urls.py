@@ -27,7 +27,10 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
     path('password/',auth_views.PasswordChangeView.as_view(template_name='users/change-password.html',
-        success_url = '/'),name='change_password')
+        success_url = '/'),name='change_password'),
+    path('password-reset/',
+         auth_views.PasswordResetView.as_view(
+             template_name='users/password_reset.html'), name='password_reset'),
 ] 
 
 
