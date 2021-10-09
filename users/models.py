@@ -23,7 +23,6 @@ class Profile(models.Model):
         + str(self.user_level)
 
 
-
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
