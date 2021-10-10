@@ -122,6 +122,7 @@ USE_TZ = True
 CKEDITOR_CONFIGS = {
         'default': {
             'toolbar': 'Custom',
+            'width': '100%',
             'toolbar_Custom': [
                 ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
                 ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'],
