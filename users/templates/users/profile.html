@@ -14,7 +14,11 @@
 				{{ p_form.as_p }}
 			</fieldset>				
 			<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Save</button>
-			<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'forum-home' %}">Return to Index</a>	
+			<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'forum-home' %}">Return to Index</a>
+			<br><br>
+			<small class="text-muted ml-2">
+				<a href="{% url 'change_password' %}">Change Password?</a>
+			</small>	
 		</form>
 	</div>	
 </div>
