@@ -16,7 +16,12 @@ def register(request):
             return redirect('forum-home')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+
+    context = {
+        'form': form,
+        'title': 'register'
+    }
+    return render(request, 'users/register.html', context)
 
 @login_required
 def profile(request):
