@@ -41,7 +41,8 @@ def profile(request):
     
     context = {
         'form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'title': 'profile'
     }
     
 
