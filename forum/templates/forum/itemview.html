@@ -10,19 +10,17 @@
                         <img src="{{ post.author.profile.image.url }}"class="img-circle special-img" style="width:60px">
                     </div>
                     <div class="media-body">
-                        <div class="article-metadata">
-                            <a class="mr-2" href="{% url 'forum-home'  %}">{{ post.post_type }}</a>
-                            <small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
-                            <br>
-                            <a class="mr-2" href="#">{{ post.author }}</a>
-                        </div>
-                        <h2><a class="article-title" href="{% url 'forum_comment-create' post.id %}">{{ post.title }}</a></h2>
-                        <div class="well">
-                            <p class="article-content">{{ post.content | safe }}</p>
-                        </div>
-                        <a class="mr-2" href="{% url 'forum_comment-create' post.id %}">Comment</a>
-                        <a class="mr-2" href="{% url 'forum_thread' post.id %}">Open the message thread</a>
+                        <a class="mr-2" href="{% url 'forum-home'  %}">{{ post.post_type }}</a>
+                        <small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
+                        <br>
+                        <a class="mr-2" href="#">{{ post.author }}</a>
                     </div>
+                    <h2><a class="article-title" href="{% url 'forum_comment-create' post.id %}">{{ post.title }}</a></h2>
+                    <div class="well">
+                        <p class="article-content">{{ post.content | safe }}</p>
+                    </div>
+                    <a class="mr-2" href="{% url 'forum_comment-create' post.id %}">Comment</a>
+                    <a class="mr-2" href="{% url 'forum_thread' post.id %}">Open the message thread</a>
                 </div>
             </div>
         {% endfor %}
