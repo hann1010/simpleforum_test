@@ -13,7 +13,6 @@
                     <th>Author</th>
                     <th>Post type</th>
                     <th>Date posted(UTC)</th>
-                    <th>Last update(UTC)</th>
                     <th>Open</th>
                     <th>Thread</th>
                 </tr>
@@ -25,7 +24,6 @@
                             <td>{{ post.author }}</td>
                             <td>{{ post.post_type }}</td>
                             <td>{{ post.date_posted|date:"H:i d, m, Y" }}</td>
-                            <td>{{ post.date_last_save|date:"H:i d, m, Y" }}</td>
                             <td><a href="{% url 'forum_open_one_post' post.id %}">Open</a></td>
                             <td><a href="{% url 'forum_thread' post.id %}">Thread</a></td>
                     </tr>
