@@ -1,5 +1,10 @@
 {% extends "forum/base.html" %}
 {% block content %}
+<p id="index"></p>
+<script>
+    var w = window.innerWidth;
+    var w_sw = 800; //switch width
+</script>
 <div class="container">
     <div class="jumbotron">
         {% if user.is_authenticated %}
@@ -13,9 +18,14 @@
                     <th>Author</th>
                     <th>Post type</th>
                     <th>Date posted(UTC)</th>
-                    <th>Last saved(UTC)</th>
-                    <th>Open</th>
-                    <th>Thread</th>
+                    <script>
+                        if (w > w_sw) {
+                            document.write("<th>Last saved(UTC)</th>");
+                            document.write("<th>Open</th>");
+                            document.write("<th>Thread</th>");                                    x.innerHTML = "if-Browser width: " + w + ", height: " + h + ".";
+                        } else {
+                        }
+                    </script>
                 </tr>
             </thead>
             {% for post in posts %}
@@ -24,10 +34,16 @@
                         <td>{{ post.title }}</td>
                             <td>{{ post.author }}</td>
                             <td>{{ post.post_type }}</td>
-                            <td>{{ post.date_posted|date:"H:i d, m, Y" }}</td>
-                            <td>{{ post.date_last_save|date:"H:i d, m, Y" }}</td>
-                            <td><a href="{% url 'forum_open_one_post' post.id %}">Open</a></td>
-                            <td><a href="{% url 'forum_thread' post.id %}">Thread</a></td>
+                            <script>
+                                if (w > w_sw) {
+                                    document.write("<td>{{ post.date_posted|date:'H:i d, m, Y' }}</td>");
+                                    document.write("<td>{{ post.date_last_save|date:'H:i d, m, Y' }}</td>");
+                                    document.write("<td><a href='{% url 'forum_open_one_post' post.id %}'>Open</a></td>");
+                                    document.write("<td><a href='{% url 'forum_thread' post.id %}'>Thread</a></td>");
+                                } else {
+                                    document.write("<td><a href='{% url 'forum_open_one_post' post.id %}'>{{ post.date_posted|date:'H:i d, m, Y' }}</a></td>");
+                                }
+                            </script>
                     </tr>
                 </tbody>	
             {% endfor %}		
