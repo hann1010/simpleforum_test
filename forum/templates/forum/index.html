@@ -16,14 +16,16 @@
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
-                    <th>Post type</th>
-                    <th>Date posted(UTC)</th>
+                    
                     <script>
                         if (w > w_sw) {
+                            document.write("<th>Post type</th>");
+                            document.write("<th>Date posted(UTC)</th>");
                             document.write("<th>Last saved(UTC)</th>");
                             document.write("<th>Open</th>");
                             document.write("<th>Thread</th>");
                         } else {
+                            document.write("<th>Date posted(UTC)</th>");
                         }
                     </script>
                 </tr>
@@ -33,9 +35,10 @@
                     <tr>
                         <td>{{ post.title }}</td>
                             <td>{{ post.author }}</td>
-                            <td>{{ post.post_type }}</td>
+                            
                             <script>
                                 if (w > w_sw) {
+                                    document.write("<td>{{ post.post_type }}</td>");
                                     document.write("<td>{{ post.date_posted|date:'H:i d, m, Y' }}</td>");
                                     document.write("<td>{{ post.date_last_save|date:'H:i d, m, Y' }}</td>");
                                     document.write("<td><a href='{% url 'forum_open_one_post' post.id %}'>Open</a></td>");
