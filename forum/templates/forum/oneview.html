@@ -1,6 +1,14 @@
 {% extends "forum/base.html" %}
 {% block content %}
-<div class="container">
+<p id="oneview"></p>
+<script>
+    var w = window.innerWidth;
+    var w_sw = 700; //switch width
+    
+    if (w > w_sw) {
+        document.write("<div class='container'>");
+    }
+</script>
     <div class="jumbotron">
         <div class="well"><h2>Forum - {{ title }}</h2></div>
             <div class="media">
@@ -27,5 +35,9 @@
             </div>
         </div>
     </div>
-</div>
+<script>
+    if (w > w_sw) {
+        document.write("</div>");
+    }
+</script>
 {% endblock content %}
