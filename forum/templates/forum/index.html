@@ -4,8 +4,11 @@
 <script>
     var w = window.innerWidth;
     var w_sw = 700; //switch width
+
+    if (w > w_sw) {
+        document.write("<div class='container'>");
+    }
 </script>
-<div class="container">
     <div class="jumbotron">
         {% if user.is_authenticated %}
         <h1>Index</h1>
@@ -71,7 +74,11 @@
         <p>Simpleforum</p>
         {% endif %}
     </div>
-</div>
+    <script>
+        if (w > w_sw) {
+            document.write("</div>");
+        }
+    </script>
 	<!-- jQuery Filter  -->
 	<script>
 		$(document).ready(function(){
