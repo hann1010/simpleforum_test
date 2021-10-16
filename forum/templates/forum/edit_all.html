@@ -1,6 +1,13 @@
 {% extends "forum/base.html" %}
 {% block content %}
-<div class="container">
+<script>
+    var w = window.innerWidth;
+    var w_sw = 700; //switch width
+    
+    if (w > w_sw) {
+        document.write("<div class='container'>");
+    }
+</script>
     <div class="jumbotron">
         <form method="POST">
             {% csrf_token %}
@@ -16,5 +23,9 @@
             </div>
         </form>
     </div>
-</div>
+<script>
+    if (w > w_sw) {
+        document.write("</div>");
+    }
+</script>
 {% endblock content %}
