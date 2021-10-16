@@ -21,11 +21,21 @@
                         <small class="text-muted">{{ object.date_posted|date:"H:i d, m, Y" }}</small>
                         <br>
                         <a class="mr-2" href="#">{{ object.author }}</a>
-                    </div>
+                    <script>
+                        if (w > w_sw) {
+                            
+                        }else {
+                            document.write("</div>");
+                        }
+                    </script>
                     <h2><a class="article-title" href="{% url 'forum_comment-create' object.id %}">{{ object.title }}</a></h2>
                     <div class="well">
                         <p class="article-content">{{ object.content | safe }}</p>
-                    </div>
+                    <script>
+                        if (w > w_sw) {
+                            document.write("</div>");
+                        }
+                    </script>
                     <a class="mr-2" href="{% url 'forum_comment-create' object.id %}">Comment</a>
                     <a class="mr-2" href="{% url 'forum_thread' object.id %}">Open the message thread</a>
                     {% if object.author == user %}

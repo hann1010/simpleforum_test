@@ -22,11 +22,21 @@
                         <small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
                         <br>
                         <a class="mr-2" href="#">{{ post.author }}</a>
-                    </div>
+                    <script>
+                        if (w > w_sw) {
+                            
+                        }else {
+                            document.write("</div>");
+                        }
+                    </script>
                     <h2><a class="article-title" href="{% url 'forum_comment-create' post.id %}">{{ post.title }}</a></h2>
                     <div class="well">
                         <p class="article-content">{{ post.content | safe }}</p>
-                    </div>
+                    <script>
+                        if (w > w_sw) {
+                            document.write("</div>");
+                        }
+                    </script>
                     <a class="mr-2" href="{% url 'forum_comment-create' post.id %}">Comment</a>
                     <a class="mr-2" href="{% url 'forum_thread' post.id %}">Open the message thread</a>
                 </div>
