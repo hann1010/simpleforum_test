@@ -31,6 +31,7 @@
                 <h2><a class="article-title" href="{% url 'forum_comment-create' post.id %}">{{ post.title }}</a></h2>
                 <div class="well">
                     <p class="article-content">{{ post.content | safe }}</p>
+                </div>
                 <script>
                     if (w > w_sw) {
                         document.write("</div>");
@@ -40,7 +41,7 @@
                 <a class="mr-2" href="{% url 'forum_thread' post.id %}">Open the message thread</a>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
     <div class="pagination">
         <span class="step-links">
@@ -64,5 +65,4 @@
         document.write("</div>");
     }
 </script>
-</div>
 {% endblock content %}

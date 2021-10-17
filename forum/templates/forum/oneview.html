@@ -30,6 +30,7 @@
                 <h2><a class="article-title" href="{% url 'forum_comment-create' object.id %}">{{ object.title }}</a></h2>
                 <div class="well">
                     <p class="article-content">{{ object.content | safe }}</p>
+                </div>
                 <script>
                     if (w > w_sw) {
                         document.write("</div>");
@@ -48,5 +49,4 @@
         document.write("</div>");
     }
 </script>
-</div>
 {% endblock content %}
