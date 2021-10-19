@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="jumbotron">
 		<h1>Profile</h1>
-		<form method="POST">
+		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			<fieldset class="form-group">
 				<legend class="border-bottom mb-4">Update profile for user: {{ user }}.</legend>
