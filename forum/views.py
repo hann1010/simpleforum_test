@@ -132,7 +132,7 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
-    success_url = '/latest/all/'
+    success_url = reverse_lazy('forum-latest_comments')
     fields = ['content']
 
     def get_context_data(self, **kwargs):
