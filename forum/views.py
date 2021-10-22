@@ -108,7 +108,7 @@ class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
-    success_url = '/latest/all/'
+    success_url = reverse_lazy('forum-latest_topics')
     fields = ['title', 'content']
 
     def get_context_data(self, **kwargs):
