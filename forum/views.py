@@ -5,6 +5,7 @@ from forum import models
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     #ListView,
@@ -194,7 +195,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Forum_post
-    success_url = '/latest/all/'
+    success_url = reverse_lazy('forum-latest_all')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
