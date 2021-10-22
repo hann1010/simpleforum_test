@@ -164,7 +164,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Forum_post
-    success_url = '/latest/all/'
+    success_url = reverse_lazy('forum-latest_all')
     fields = ['content']
 
     def get_context_data(self, **kwargs):
