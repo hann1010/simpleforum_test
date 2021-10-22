@@ -44,7 +44,5 @@ def profile(request):
         'p_form': p_form,
         'title': 'profile'
     }
-    
-
     return render(request, 'users/profile.html', context)
 
