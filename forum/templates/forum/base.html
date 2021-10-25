@@ -24,7 +24,7 @@
       .affix + .container-fluid {
         padding-top: 70px;
       }
-      </style>
+    </style>
 
     {% if title %}
         <title>Forum - {{ title }}</title>
@@ -34,7 +34,17 @@
 </head>
   <body>
     <header class="site-header">
-      <nav class="navbar navbar-default" data-spy="affix" data-offset-top="0">
+      <script>
+        var w = window.innerWidth;
+        var w_sw = 700; //switch width
+        
+        if (w > w_sw) {
+            document.write("<nav class='navbar navbar-default' data-spy='affix' data-offset-top='0'>");
+        } else {
+            document.write("<nav class='navbar navbar-default' >"); //for mobile
+        }
+      </script>
+      
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'forum-home' %}">Simpleforum</a>
