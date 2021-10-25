@@ -13,6 +13,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
+    <style>
+      /* Note: Try to remove the following lines to see the effect of CSS positioning */
+      .affix {
+        top: 0;
+        width: 100%;
+        z-index: 9999 !important;
+      }
+    
+      .affix + .container-fluid {
+        padding-top: 70px;
+      }
+      </style>
+
     {% if title %}
         <title>Forum - {{ title }}</title>
     {% else %}
@@ -21,7 +34,7 @@
 </head>
   <body>
     <header class="site-header">
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default" data-spy="affix" data-offset-top="0">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'forum-home' %}">Simpleforum</a>
