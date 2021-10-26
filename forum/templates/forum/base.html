@@ -39,13 +39,14 @@
         var w_sw = 700; //switch width
         
         if (w > w_sw) {
-            document.write("<nav class='navbar navbar-default' data-spy='affix' data-offset-top='1'>");
+            document.write("<div class='container-fluid' style='height:30px;'>");
+            document.write("</div>");
+            document.write("<nav class='navbar navbar-default' data-spy='affix' data-offset-top='30'>");
         } else {
             document.write("<nav class='navbar navbar-default' >"); //for mobile
         }
       </script>
-      
-        <div class="container-fluid">
+        <div class="container-fluid" >
           <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'forum-home' %}">Simpleforum</a>
           </div>
