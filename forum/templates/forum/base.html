@@ -20,10 +20,7 @@
         width: 100%;
         z-index: 9999 !important;
       }
-    
-      .affix + .container-fluid {
-        padding-top: 70px;
-      }
+
     </style>
 
     {% if title %}
@@ -39,14 +36,14 @@
         var w_sw = 700; //switch width
         
         if (w > w_sw) {
-            document.write("<div class='container-fluid' style='height:30px;'>");
+            document.write("<div class='container-fluid' style='height:80px;'>");
             document.write("</div>");
-            document.write("<nav class='navbar navbar-default' data-spy='affix' data-offset-top='30'>");
+            document.write("<nav class='navbar navbar-default' data-spy='affix' data-offset-bottom='40'>");
         } else {
             document.write("<nav class='navbar navbar-default' >"); //for mobile
         }
       </script>
-        <div class="container-fluid" style="height:0px;">
+        <div class="container-fluid" >
           <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'forum-home' %}">Simpleforum</a>
           </div>
