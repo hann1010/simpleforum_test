@@ -6,7 +6,7 @@
     var w_sw = 700; //switch width
     
     if (w > w_sw) {
-        document.write("<div class='container'>");
+        document.write("<div class='container' style='min-height:1200px;'>");
     }
 </script>
     <div class="well"><h2>Forum - {{ title }}</h2></div>
@@ -44,24 +44,26 @@
                 {% endif %}
             </div>
         </div>
-        {% endfor %}
-    </div>
-    <div class="pagination">
-        <span class="step-links">
-            {% if posts.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ posts.previous_page_number }}">previous</a>
-            {% endif %}
+    {% endfor %}
+    <div class="well well-sm">
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ posts.previous_page_number }}">previous</a>
+                {% endif %}
 			
-            <span class="current">
-                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-            </span>
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </span>
 	
-            {% if posts.has_next %}
-                <a href="?page={{ posts.next_page_number }}">next</a>   
-                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">next</a>   
+                    <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
     </div>
 <script>
     if (w > w_sw) {
