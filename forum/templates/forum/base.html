@@ -38,6 +38,10 @@
     {% endif %}
 </head>
   <body>
+    <script>
+      var w = window.innerWidth;
+      var w_sw = 700; //switch width
+    </script>
     <header class="site-header">
       <nav class="navbar navbar-default">
         <div class="container-fluid" >
@@ -85,11 +89,8 @@
 
     <!-- Optional JavaScript -->
     <script>
-      var w = window.innerWidth;
-    var w_sw = 700; //switch width
-    
-    if (w > w_sw) {
-      $(document).ready(function(){
+      if (w > w_sw) {
+        $(document).ready(function(){
         $('.navbar').affix({offset: {} }); 
       });
     }
