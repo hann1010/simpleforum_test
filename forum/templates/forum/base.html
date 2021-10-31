@@ -15,20 +15,14 @@
     
     <style>
       
-      .affix {
-        top: 0;
-        width: 100%;
-        z-index: 9999 !important;
-      }
-
-      .affix-bottom {
-        position: 0;
-      }
-
-      .affix + .container-fluid {
-        padding-top: 70px;
-      }
-
+    .affix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      display: none;
+    }
     </style>
 
     {% if title %}
@@ -43,7 +37,13 @@
       var w_sw = 700; //switch width
     </script>
     <header class="site-header">
-      <nav class="navbar navbar-default">
+      <script>
+        if (w > w_sw) {
+            document.write("<div class='container-fluid' style='height:30px;'>");
+            document.write("</div>");
+        }
+      </script>
+      <nav class="navbar navbar-default" >
         <div class="container-fluid" >
           <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'forum-home' %}">Simpleforum</a>
@@ -90,9 +90,27 @@
     <!-- Optional JavaScript -->
     <script>
       if (w > w_sw) {
-        $(document).ready(function(){
-        $('.navbar').affix({offset: {} }); 
-      });
+        var target = $('.navbar')
+        target.after('<div class="affix" id="affix"></div>')
+        var affix = $('.affix')
+        affix.append(target.clone(true))
+
+        // Show affix on scroll.
+        var element = document.getElementById('affix')
+        if (element !== null) {
+          var position = target.position()
+          window.addEventListener('scroll', function () {
+          var height = $(window).scrollTop()
+          if (height > position.top) {
+            target.css('visibility', 'hidden')
+            affix.css('display', 'block')
+          } else {
+            affix.css('display', 'none')
+            target.css('visibility', 'visible')
+          }
+        })
+      }
+
     }
     </script> 
   </body>
