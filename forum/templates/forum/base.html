@@ -100,18 +100,17 @@
         if (element !== null) {
           var position = target.position()
           window.addEventListener('scroll', function () {
-          var height = $(window).scrollTop()
-          if (height > position.top) {
-            target.css('visibility', 'hidden')
-            affix.css('display', 'block')
-          } else {
-            affix.css('display', 'none')
-            target.css('visibility', 'visible')
-          }
-        })
+            var height = $(window).scrollTop()
+            if (height > position.top) {
+              target.css('visibility', 'hidden')
+              affix.css('display', 'block')
+            } else {
+              affix.css('display', 'none')
+              target.css('visibility', 'visible')
+            }
+          })
+        }
       }
-
-    }
     </script> 
   </body>
 </html>
