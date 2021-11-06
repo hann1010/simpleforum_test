@@ -49,7 +49,11 @@
             <a class="navbar-brand" href="{% url 'forum-home' %}">Simpleforum</a>
           </div>
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'forum-home' %}">Home</a></li>
+            <script>
+              if (w > w_sw) {
+                  document.write("<li><a href='{% url 'forum-home' %}''>Home</a></li>");
+              }
+            </script>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Latest post <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="{% url 'forum-latest_all' %}">All</a></li>
