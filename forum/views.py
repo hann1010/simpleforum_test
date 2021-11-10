@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from .models import Forum_post
 from forum import models
+from .forms import FilterForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -19,6 +20,7 @@ def home(request):
     dic_x = {}
     if request.user.is_authenticated:
         filter_str = ''
+        filter_obj = FilterForm(request.POST or None)
         list_rows_int = request.user.profile.list_rows
         db_data = Forum_post.objects.filter(title__icontains = filter_str).order_by('-date_posted')
         paginator = Paginator(db_data, list_rows_int)
@@ -26,7 +28,8 @@ def home(request):
         page_data = paginator.get_page(page_number)
         dic_x = {
             'title': 'home',
-            'posts': page_data
+            'posts': page_data,
+            'filter': filter_obj
         }
     return render(request, 'forum/index.html', dic_x)
 
