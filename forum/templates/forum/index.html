@@ -9,12 +9,12 @@
         {% if user.is_authenticated %}
         <h1>Index</h1>
         <br>
-		<form action="/" method="POST">
-		{% csrf_token %}
-		{{ filter.title_filter }}
-		<input class="col-sm-2" type = "submit" value = "Submit">
-		</form>
-		<br><br>
+        <form action="/" method="POST">
+            {% csrf_token %}
+            {{ filter.title_filter }}
+            <input class="col-sm-2" type = "submit" value = "Submit">
+        </form>
+        <br><br>
         <input class="form-control" id="myInput" type="text" placeholder="Search..">
         <br>	
         <table class="table table-striped">
