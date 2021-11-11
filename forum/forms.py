@@ -2,4 +2,4 @@ from django import forms
 
 class FilterForm(forms.Form):
     title_filter = forms.CharField(max_length=100, required=False,  
-        widget=forms.TextInput( attrs={'placeholder': 'filter'}))
+        widget=forms.TextInput( attrs={'placeholder': ' Filter..', 'class': 'input-xl col-sm-10'}))
