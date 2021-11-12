@@ -19,7 +19,11 @@ from django.views.generic import (
 def home(request):
     dic_x = {}
     if request.user.is_authenticated:
-        filter_str = ''
+        filter_tmp = request.POST.get('title_filter')
+        if filter_tmp != None:
+            filter_str = filter_tmp
+        else:
+            filter_str = ''
         filter_obj = FilterForm(request.POST or None)
         list_rows_int = request.user.profile.list_rows
         db_data = Forum_post.objects.filter(title__icontains = filter_str).order_by('-date_posted')
