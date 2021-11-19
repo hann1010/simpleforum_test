@@ -8,6 +8,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     #ListView,
     DetailView,
@@ -37,19 +38,17 @@ def home(request):
         }
     return render(request, 'forum/index.html', dic_x)
 
-
+@login_required
 def latest_topics(request):
-    dic_x = {}
-    if request.user.is_authenticated:
-        items_in_page_int = request.user.profile.items_in_page
-        db_data = Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
-        paginator = Paginator(db_data, items_in_page_int)
-        page_number = request.GET.get('page')
-        page_data = paginator.get_page(page_number)
-        dic_x = {
-            'title': 'latest topics',
-            'posts': page_data
-        }
+    items_in_page_int = request.user.profile.items_in_page
+    db_data = Forum_post.objects.filter(origin_post_id = 0).order_by('-date_posted')
+    paginator = Paginator(db_data, items_in_page_int)
+    page_number = request.GET.get('page')
+    page_data = paginator.get_page(page_number)
+    dic_x = {
+        'title': 'latest topics',
+        'posts': page_data
+    }
     return render(request, 'forum/itemview.html', dic_x)
 
 
