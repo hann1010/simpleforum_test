@@ -38,6 +38,7 @@ def home(request):
         }
     return render(request, 'forum/index.html', dic_x)
 
+
 @login_required
 def latest_topics(request):
     items_in_page_int = request.user.profile.items_in_page
@@ -52,18 +53,17 @@ def latest_topics(request):
     return render(request, 'forum/itemview.html', dic_x)
 
 
+@login_required
 def latest_comments(request):
-    dic_x = {}
-    if request.user.is_authenticated:
-        items_in_page_int = request.user.profile.items_in_page
-        db_data = Forum_post.objects.exclude(origin_post_id = 0).order_by('-date_posted')
-        paginator = Paginator(db_data, items_in_page_int)
-        page_number = request.GET.get('page')
-        page_data = paginator.get_page(page_number)
-        dic_x = {
-            'title': 'latest comments',
-            'posts': page_data
-        }
+    items_in_page_int = request.user.profile.items_in_page
+    db_data = Forum_post.objects.exclude(origin_post_id = 0).order_by('-date_posted')
+    paginator = Paginator(db_data, items_in_page_int)
+    page_number = request.GET.get('page')
+    page_data = paginator.get_page(page_number)
+    dic_x = {
+        'title': 'latest comments',
+        'posts': page_data
+    }
     return render(request, 'forum/itemview.html', dic_x)
 
 
