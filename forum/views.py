@@ -114,7 +114,7 @@ class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
 
 class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
     model = Forum_post
-    template_name = 'forum/oneview.html'
+    template_name = 'forum/user_info.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
