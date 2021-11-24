@@ -112,6 +112,17 @@ class ThreadDetailView(LoginRequiredMixin, DetailView): #Show post thread
         return context
 
 
+class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
+    model = Forum_post
+    template_name = 'forum/oneview.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #code
+        context["title"] = 'user info'
+        return context
+
+
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Forum_post
     success_url = reverse_lazy('forum-latest_topics')
