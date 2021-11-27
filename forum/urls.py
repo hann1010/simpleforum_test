@@ -7,7 +7,8 @@ from .views import (
     TopicCreateView,
     CommentCreateView,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    UserDetailView
 )
 
 
@@ -22,6 +23,7 @@ urlpatterns = [
     path('all/<int:pk>/thread/', ThreadDetailView.as_view(), name='forum_thread'),
     path('all/<int:pk>/update/', PostUpdateView.as_view(), name='forum_all_update'),
     path('all/<int:pk>/delete/', PostDeleteView.as_view(), name='forum_all_delete'),
+    path('all/<int:pk>/user_info/', UserDetailView.as_view(), name='forum_user_info'),
     
 	
 ]
