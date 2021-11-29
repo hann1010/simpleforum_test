@@ -16,7 +16,7 @@
                     <a class="mr-2" href="{% url 'forum-home'  %}">{{ post.post_type }}</a>
                     <small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
                     <br>
-                    <a class="mr-2" onclick="alert('User profile:\nNot implemended  yet')">{{ post.author }}</a>
+                    <a class="mr-2" href="{% url 'forum_user_info' post.id %}">{{ post.author }}</a>
                 <script>
                     if (w > w_sw) {
                         
