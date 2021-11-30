@@ -119,6 +119,7 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         #code
+        context["user_info"] = 'test'
         context["title"] = 'user info'
         return context
 
