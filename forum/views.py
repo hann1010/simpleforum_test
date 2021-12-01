@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (
@@ -118,8 +119,12 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #code
-        context["user_info"] = 'test'
+        db_data = User.objects.values().get(id=1)
+        dic_x = {
+        'username': db_data['username'],
+        'email': db_data['email']
+        }
+        context['user_info'] = dic_x
         context["title"] = 'user info'
         return context
 
