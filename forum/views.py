@@ -119,7 +119,8 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        db_data = User.objects.all().values().get(id=1)
+        db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        db_data = User.objects.all().values().get(pk=db_data['author_id'])
         dic_x = {
         'username': db_data['username'],
         'email': db_data['email']
