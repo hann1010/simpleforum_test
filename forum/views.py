@@ -1,4 +1,5 @@
 #from _typeshed import Self
+from django import db
 from django.shortcuts import render
 from .models import Forum_post
 from forum import models
@@ -122,8 +123,10 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
         db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         db_data = User.objects.all().values().get(pk=db_data['author_id'])
         dic_x = {
-        'username': db_data['username'],
-        'email': db_data['email']
+            'username': db_data['username'],
+            'email': db_data['email'],
+            'first_name' : db_data['first_name'],
+            'last_name' : db_data['last_name']
         }
         context['user_info'] = dic_x
         context["title"] = 'user info'
