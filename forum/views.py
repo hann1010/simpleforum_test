@@ -126,7 +126,9 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
             'username': db_data['username'],
             'email': db_data['email'],
             'first_name' : db_data['first_name'],
-            'last_name' : db_data['last_name']
+            'last_name' : db_data['last_name'],
+            'date_joined' : db_data['date_joined'],
+            'last_login' : db_data['last_login']
         }
         context['user_info'] = dic_x
         context["title"] = 'user info'
