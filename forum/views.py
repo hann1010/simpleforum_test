@@ -131,7 +131,7 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
             'last_login' : db_data['last_login']
         }
         context['user_info'] = dic_x
-        context["title"] = 'user info'
+        context["title"] = 'User info'
         return context
 
 
