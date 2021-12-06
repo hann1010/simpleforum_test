@@ -2,13 +2,11 @@
 from django import db
 from django.shortcuts import render
 from .models import Forum_post
-from forum import models
 from .forms import FilterForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (
@@ -120,17 +118,6 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        db_data = Forum_post.objects.all().values().get(pk=self.kwargs.get('pk'))
-        db_data = User.objects.all().values().get(pk=db_data['author_id'])
-        dic_x = {
-            'username': db_data['username'],
-            'email': db_data['email'],
-            'first_name' : db_data['first_name'],
-            'last_name' : db_data['last_name'],
-            'date_joined' : db_data['date_joined'],
-            'last_login' : db_data['last_login']
-        }
-        context['user_info'] = dic_x
         context["title"] = 'User info'
         return context
 
