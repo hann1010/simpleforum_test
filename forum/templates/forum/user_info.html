@@ -14,6 +14,10 @@
 			<li class="list-group-item">{{ object.author.first_name }}</li>
 			<li class="list-group-item list-group-item-info"><b>Lastname:</b></li>
 			<li class="list-group-item">{{ object.author.last_name}}</li>
+			<li class="list-group-item list-group-item-info"><b>Address:</b></li>
+			<li class="list-group-item">{{ object.author.profile.address}}</li>
+			<li class="list-group-item list-group-item-info"><b>Town:</b></li>
+			<li class="list-group-item">{{ object.author.profile.town}}</li>
 			<li class="list-group-item list-group-item-info"><b>Date joined:</b></li>
 			<li class="list-group-item">{{ object.author.date_joined|date:'H:i d, m, Y' }}</li>
 			<li class="list-group-item list-group-item-info"><b>Date last login:</b></li>
