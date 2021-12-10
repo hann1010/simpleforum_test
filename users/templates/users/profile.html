@@ -25,7 +25,9 @@
 						<label>Address:</label><br>
 						{{ p_form.address }}<br><br>
 						<label>Town:</label><br>
-						{{ p_form.town }}<br><br><br>
+						{{ p_form.town }}<br><br>
+						<label>Image:</label><br>
+						{{ p_form.image }}<br><br>
 						<legend class="border-bottom mb-4">Settings:</legend>
 						<label>List rows:</label><br>
 						{{ p_form.list_rows }}<br><br>
@@ -33,9 +35,11 @@
 						{{ p_form.items_in_page }}<br><br>
 					</div>
 				</div>
-			</fieldset>				
-			<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Save</button>
-			<a class="btn btn-primary btn-sm mt-1 mb-1" href="javascript:history.go(-1)">Back</a>
+			</fieldset>
+			<div class="form-group">			
+				<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Save</button>
+				<a class="btn btn-primary btn-sm mt-1 mb-1" href="javascript:history.go(-1)">Back</a>
+			</div>
 			<br><br>
 			<small class="text-muted ml-2">
 				<a href="{% url 'change_password' %}">Change Password?</a>
