@@ -40,7 +40,7 @@
                 <tbody id="myTable">
                     <tr>
                         <td><a href="{% url 'forum_open_one_post' post.id %}">{{ post.title }}</a></td>
-                        <td>{{ post.author }}</td>
+                        <td><a href="{% url 'forum_user_info' post.id %}">{{ post.author }}</a></td>
                         <script>
                             if (w > w_sw) {
                                 document.write("<td>{{ post.post_type }}</td>");
