@@ -38,6 +38,7 @@ def profile(request):
             return redirect('forum-home')
 
     else:
+        user_level_int = request.user.profile.user_level
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
     
