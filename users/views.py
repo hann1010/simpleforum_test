@@ -39,6 +39,12 @@ def profile(request):
 
     else:
         user_level_int = request.user.profile.user_level
+        if user_level_int > 4:
+            user_level_tmp = 'Post, update, comments and delete'
+        elif user_level_int > 3:
+            user_level_tmp = 'Post, update and comments'
+        else:
+            user_level_tmp = 'Read only'
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
     
