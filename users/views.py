@@ -52,7 +52,7 @@ def profile(request):
         'form': u_form,
         'p_form': p_form,
         'title': 'profile',
-        'user_level' : user_level_tmp
+        'user_level': user_level_tmp
     }
     return render(request, 'users/profile.html', context)
 
