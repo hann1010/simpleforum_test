@@ -141,7 +141,7 @@ CKEDITOR_CONFIGS = {
 
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = '/*****/*****/simpleforum_test/static'
+#STATIC_ROOT = '/home/SERVER_USER_NAME/simpleforum_test/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -153,6 +153,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #develoment onl
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_HOST = 'smtp.gmail.com'
 #EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'EMAIL_USER'
+#EMAIL_HOST_PASSWORD = 'EMAIL_PASS'
 #EMAIL_USE_TLS = True
-#EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+#EMAIL_USE_SSL = False
