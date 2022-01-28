@@ -3,3 +3,7 @@
     Test environment:
         Python 3.8.X
         Django 3.1
+
+        Required external apps:
+            CKEditor
+            Pillow
