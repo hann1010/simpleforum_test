@@ -1,5 +1,7 @@
 # simpleforum_test
 
+This is a fully functional test version.
+
     Test environment:
         Python 3.6
         Django 3.1
