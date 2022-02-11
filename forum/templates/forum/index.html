@@ -9,8 +9,7 @@
         {% if user.is_authenticated %}
         <h1>Index</h1>
         <br>
-        <form action="/" method="POST">
-            {% csrf_token %}
+        <form action="/" method="GET">
             {{ filter.title_filter }}
             <br>
             <input class="btn btn-success btn-sm" type="submit" value="Submit filter">
