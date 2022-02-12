@@ -19,6 +19,7 @@ from django.views.generic import (
 
 def home(request):
     dic_x = {}
+    filter_url_tmp = ''
     if request.user.is_authenticated:
         filter_tmp = request.GET.get('title_filter')
         if filter_tmp != None:
@@ -34,7 +35,8 @@ def home(request):
         dic_x = {
             'title': 'home',
             'posts': page_data,
-            'filter': filter_obj
+            'filter': filter_obj,
+            'filter_url_str' : filter_url_tmp
         }
     return render(request, 'forum/index.html', dic_x)
 
