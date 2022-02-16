@@ -19,14 +19,14 @@ from django.views.generic import (
 
 def home(request):
     dic_x = {}
-    filter_url_tmp = '&' + request.get_full_path()
+    filter_url_tmp = ''
+    filter_url_org = request.get_full_path()
+    filter_url_org1 = '&' + (filter_url_org.replace('/', ''))
     if request.user.is_authenticated:
         filter_tmp = request.GET.get('title_filter')
-        
         if filter_tmp != None:
             filter_str = filter_tmp
-            
-            
+            filter_url_tmp = (filter_url_org1.replace('?', ''))           
         else:
             filter_str = ''
         filter_obj = FilterForm(request.GET or None)
