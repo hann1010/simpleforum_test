@@ -26,7 +26,8 @@ def home(request):
         filter_tmp = request.GET.get('title_filter')
         if filter_tmp != None:
             filter_str = filter_tmp
-            filter_url_tmp = (filter_url_org1.replace('?', ''))           
+            filter_url_tmp = (filter_url_org1.replace('?', ''))
+            position = filter_url_tmp.rfind('&')           
         else:
             filter_str = ''
         filter_obj = FilterForm(request.GET or None)
