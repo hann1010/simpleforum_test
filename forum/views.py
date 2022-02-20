@@ -20,6 +20,7 @@ from django.views.generic import (
 def home(request):
     dic_x = {}
     filter_url_tmp = ''
+    filter_url = ''
     filter_url_org = request.get_full_path()
     filter_url_org1 = '&' + (filter_url_org.replace('/', ''))
     if request.user.is_authenticated:
@@ -27,7 +28,11 @@ def home(request):
         if filter_tmp != None:
             filter_str = filter_tmp
             filter_url_tmp = (filter_url_org1.replace('?', ''))
-            position = filter_url_tmp.rfind('&')           
+            position = filter_url_tmp.rfind('&')
+            if position > 0:
+                filter_url = filter_url_tmp[position:]
+            else:
+                filter_url = filter_url_tmp
         else:
             filter_str = ''
         filter_obj = FilterForm(request.GET or None)
@@ -40,7 +45,7 @@ def home(request):
             'title': 'home',
             'posts': page_data,
             'filter': filter_obj,
-            'filter_url_str' : filter_url_tmp
+            'filter_url_str' : filter_url
         }
     return render(request, 'forum/index.html', dic_x)
 
