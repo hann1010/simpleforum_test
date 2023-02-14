@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'simpleforum_test.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'  # To run Django 3.2
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
